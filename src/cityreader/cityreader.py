@@ -1,7 +1,5 @@
 import csv 
-import pandas
-colnames = ['city','state_name','county_name','lat','lng','population','density','timezone','zips']
-data = pandas.read_csv('cities.csv', names=colnames)
+
 
 filename = "cities.csv"
 
@@ -9,10 +7,13 @@ filename = "cities.csv"
 # fields for name, lat and lon (representing latitude and longitude).
 
 class City:
-  def __init__(self, lat, lon):
+  def __init__(self, name, lat, lon):
+    self.name = name
     self.lat = lat
     self.lon = lon
 
+  def __repr__(self):
+    return f"City: {self.city}, lat: {self.lat}, lon: {self.lon}"
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
 #
@@ -26,20 +27,17 @@ class City:
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
 cities = []
-cities = data.city.tolist()
-
-# with open(filename, 'r') as csvfile:
-#   csvreader = csv.reader(csvfile)
-
-#   for column in csvreader:
-#     cities.append(column)
-
 
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
+  with open('cities.csv', newline='') as csvfile:
+    for city in list(csv.reader(csvfile))[1:]:
+      newCity = City(city[0], float(city[3]), float(city[4]))
+      cities.append(newCity)
+
     
     return cities
 
@@ -47,7 +45,7 @@ cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c)
+    print(f"{c.name}, {c.lat}, {c.lon}")
 
 # STRETCH GOAL!
 #

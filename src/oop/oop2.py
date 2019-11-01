@@ -6,6 +6,7 @@
 class GroundVehicle():
     def __init__(self, num_wheels=4):
         self.num_wheels = num_wheels
+        
 
     def drive(self):
         print("vrooom")
@@ -32,12 +33,6 @@ class Motorcycle(GroundVehicle):
         print("BRAAAP!!")
 
 m = Motorcycle()
-# b.drive()
-# print(b)
-
-# motor = GroundVehicle(2)
-# motor.drive()
-# print(motor)
 
 
 
