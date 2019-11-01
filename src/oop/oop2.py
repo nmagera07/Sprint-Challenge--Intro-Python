@@ -13,7 +13,8 @@ class GroundVehicle():
     def __repr__(self):
         return f"Number of wheels: ({repr(self.num_wheels)})"
 
-
+g = GroundVehicle()
+# d.drive()
 # Subclass Motorcycle from GroundVehicle.
 #
 # Make it so when you instantiate a Motorcycle, it automatically sets the number
@@ -26,26 +27,34 @@ class GroundVehicle():
 class Motorcycle(GroundVehicle):
     def __init__(self, num_wheels=2):
         self.num_wheels = num_wheels
+
     def drive(self):
         print("BRAAAP!!")
 
-b = Motorcycle()
-b.drive()
-print(b)
+m = Motorcycle()
+# b.drive()
+# print(b)
 
 # motor = GroundVehicle(2)
 # motor.drive()
 # print(motor)
 
-# vehicles = [
-#     GroundVehicle(),
-#     GroundVehicle(),
-#     Motorcycle(),
-#     GroundVehicle(),
-#     Motorcycle(),
-# ]
 
+
+vehicles = [
+    GroundVehicle(),
+    GroundVehicle(),
+    Motorcycle(),
+    GroundVehicle(),
+    Motorcycle(),
+]
 
 # Go through the vehicles list and print the result of calling drive() on each.
 
 # TODO
+
+# print(vehicles)
+
+for i in vehicles:
+    print(i.drive())
+
